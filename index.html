@@ -52,22 +52,38 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">SeqPose: An End-to-End Framework to Unify Single-frame and Video-based RGB Category-Level Pose Estimation</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Yuzhu Ji</a><sup>1*</sup>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Mingshan Sun</a><sup>2*</sup>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Jianyang Shi</a><sup>3</sup>,
+                  </span>
+                  <span class="author-block">
+                    <a href="Forth AUTHOR PERSONAL LINK" target="_blank">Xiaoke Jiang</a><sup>4</sup>
+                  </span>
+                  <span class="author-block">
+                    <a href="Forth AUTHOR PERSONAL LINK" target="_blank">Yiqun Zhang</a><sup>1,5</sup>
+                  </span>
+                  <span class="author-block">
+                    <a href="Fifth AUTHOR PERSONAL LINK" target="_blank">Haijun Zhang</a><sup>3</sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+                    <!-- <span class="author-block">Institution Name<br>Conferance name and year</span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                    <span class="author-block"><sup>1</sup>School of Computer Science and Technology, Guangdong University of Technology</span>
+                    <span class="author-block"><sup>2</sup>CVTE Research, Guangzhou, China</span>
+                    <span class="author-block"><sup>3</sup>Harbin Institute of Technology, Shenzhen, China</span>
+                    <span class="author-block"><sup>4</sup>CVR, International Digital Economy Academy (IDEA)</span>
+                    <span class="author-block"><sup>5</sup>Hong Kong Baptist University</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author</small></span> -->
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small><small><br>yuzhu.ji a/t gdut.edu.cn</small></span>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
@@ -123,23 +139,6 @@
 </section>
 
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
 <!-- Paper abstract -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
@@ -148,7 +147,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Category-level object pose estimation is a longstanding and fundamental task crucial for augmented reality and robotic manipulation applications. Existing RGB-based approaches struggle with multi-stage settings and heavily rely on off-the-shelf techniques, such as object detectors, depth estimators, non-differentiable NOCS shape alignment, etc. Extra dependencies lead to the accumulation of errors and complicate the whole pipeline, limiting the deployment of these approaches in practical applications. This paper streamlined an end-to-end framework unifying the single-frame and video-based category-level pose estimation. Specifically, instead of explicitly introducing extra dependencies, the DINOv2 encoder and depth decoder, as robust semantic and geometric prior extractors, are leveraged to produce intra-frame hierarchical semantic and geometric features. A spatial-temporal sparse query network is developed to model the implicit correspondence and inter-frame correlations between a set of implicit 3D query anchors and intra-frame features. Finally, a pose prediction head is employed using the bipartite matching algorithm. Experimental results demonstrate that our model achieves state-of-the-art performance compared with RGB-based categorical pose estimation methods on the REAL275 and CAMERA25 datasets. 
           </p>
         </div>
       </div>
@@ -156,6 +155,25 @@
   </div>
 </section>
 <!-- End paper abstract -->
+
+<section class="section" id="Pipeline">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Pipeline</h2>
+  </div>
+</section>
+
+<!-- model overview image-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/fig1-overview-rev7-CR.png" alt="MY ALT TEXT"/>
+      <!-- <h1 class="subtitle has-text-centered"> -->
+        <b>Overview of our proposed framework.</b> Our framework integrates the DINOv2 encoder and a depth decoder to extract hierarchical semantic and geometry-aware features (a). A spatial-temporal sparse query network (b) aggregates intra-frame features using inter-frame correlations of implicit 3D query anchors. The pose prediction head (c) directly regresses the object pose and size from the learned queries.
+      <!-- </h1> -->
+    </div>
+  </div>
+</section>
+<!-- End model overview image -->
 
 
 <!-- Image carousel -->
@@ -165,31 +183,18 @@
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
+        <img src="static/images/Fig3-APcurves.png" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-          First image description.
+          AP curves in terms of different types of errors on (a) REAL275 and (b) CAMERA25 datasets.
         </h2>
       </div>
       <div class="item">
         <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
+        <img src="static/images/fig4-vis-exp.jpg" alt="MY ALT TEXT"/>
         <h2 class="subtitle has-text-centered">
-          Second image description.
+          Qualitative results. The predicted and GT 3D bounding boxes are marked in red and green, respectively.
         </h2>
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
     </div>
   </div>
 </div>
@@ -198,27 +203,6 @@
 <!-- End image carousel -->
 
 
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
 
 
 <!-- Video carousel -->
@@ -275,11 +259,23 @@
 
 
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
-    </div>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{ijcai25seqpose,
+      author       = {Yuzhu Ji and
+                      Mingshan Sun and
+                      Jiayang Shi and
+                      Xiaoke Jiang and
+                      Yiqun Zhang and
+                      Haijun Zhang},
+      title        = {SeqPose: An End-to-End Framework to Unify Single-frame and Video-based RGB Category-Level Pose Estimation},
+      booktitle    = {{IJCAI} 2025},
+      pages        = {1--8},
+      year         = {2025},
+    }
+    </code></pre>
+  </div>
 </section>
 <!--End BibTex citation -->
 
